@@ -131,7 +131,11 @@ extension Data: DecodableFromHex {
 
 extension UInt: DecodableFromHex {
     public init?(from hexString: String) {
-        self.init(hexString.stripHexPrefix(), radix: 16)
+        if hexString.hasPrefix("0x") {
+            self.init(hexString.stripHexPrefix(), radix: 16)
+        } else {
+            self.init(hexString)
+        }
     }
 }
 

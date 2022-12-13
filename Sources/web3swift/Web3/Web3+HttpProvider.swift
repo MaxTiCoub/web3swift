@@ -27,7 +27,7 @@ public class Web3HttpProvider: Web3Provider {
             var urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData)
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
-            urlRequest.httpMethod = APIRequest.getNetwork.call
+            urlRequest.httpMethod = "POST"
             urlRequest.httpBody = APIRequest.getNetwork.encodedBody
             do {
                 let response: APIResponse<UInt> = try await APIRequest.send(uRLRequest: urlRequest, with: session)
